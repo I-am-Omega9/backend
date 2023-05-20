@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Коментарии</title>
+</head>
+<body> <h2>Добавления комментария </h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Подтвердить</button>
+  </form>
+
+  <h2>Comments</h2>
+<ul>
+{% for comment in comments %}
+  <li><h2>Имя:{{ comment.name }}</h2> <p> Почта:{{ comment.email }} <br> Коментарий:{{ comment.text }}</p></li>
+{% empty %}
+  <li>Коментарий еще нет..</li>
+{% endfor %}
+</ul>
+
+
+</body>
+</html>
